@@ -89,7 +89,7 @@ local function toggleRecording()
 		if config.dynamicSlots == "rotate" then slotIndex = slotIndex - 1 end
 		setMacro(reg, prevRec)
 		notify("Recording aborted.", "essential")
-	elseif not lessNotifications then
+	else
 		notify("Recorded [" .. reg .. "]", "nonessential")
 	end
 end
