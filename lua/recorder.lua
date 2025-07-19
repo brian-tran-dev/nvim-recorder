@@ -67,7 +67,9 @@ local function toggleRecording()
 	if not isRecording() then
 		breakCounter = 0 -- reset break points
 		normal("q" .. reg)
-		notify("Recording to [" .. reg .. "]…", "essential")
+		if not lessNotifications then
+			notify("Recording to [" .. reg .. "]…", "essential")
+		end
 		return
 	end
 
