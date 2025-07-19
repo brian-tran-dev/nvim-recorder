@@ -403,17 +403,14 @@ function M.displaySlots()
 	local out = {}
 
 	for _, reg in pairs(macroRegs) do
-		local empty = getMacro(reg) == ""
 		local active = macroRegs[slotIndex] == reg
-		local hasBreakPoints = getMacro(reg):find(vim.pesc(breakPointKey))
-		local bpIcon = hasBreakPoints and "!" or ""
 
-		if empty and active then
-			table.insert(out, "[ ]")
-		elseif not empty and active then
-			table.insert(out, "[" .. reg .. bpIcon .. "]")
-		elseif not empty and not active then
-			table.insert(out, reg .. bpIcon)
+		if active then
+			table.insert(out, "[")
+			table.insert(out, reg)
+			table.insert(out, "]")
+		else
+			table.insert(out, reg)
 		end
 	end
 
